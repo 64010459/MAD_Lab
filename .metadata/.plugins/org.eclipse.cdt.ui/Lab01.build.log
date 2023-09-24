@@ -1,17 +1,10 @@
-03:39:11 **** Incremental Build of configuration Debug for project Lab01 ****
+06:17:19 **** Incremental Build of configuration Debug for project Lab01 ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Lab01.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\sunny\STM32CubeIDE\MAD_Lab\Lab01\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab01.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Lab01.elf
- 
 arm-none-eabi-size   Lab01.elf 
-arm-none-eabi-objdump -h -S  Lab01.elf  > "Lab01.list"
    text	   data	    bss	    dec	    hex	filename
    6356	     44	   1572	   7972	   1f24	Lab01.elf
 Finished building: default.size.stdout
  
-Finished building: Lab01.list
- 
 
-03:39:12 Build Finished. 0 errors, 0 warnings. (took 653ms)
+06:17:19 Build Finished. 0 errors, 0 warnings. (took 196ms)
 
