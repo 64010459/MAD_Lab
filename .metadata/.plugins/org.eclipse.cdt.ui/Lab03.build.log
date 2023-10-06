@@ -1,4 +1,4 @@
-03:22:36 **** Incremental Build of configuration Debug for project Lab03 ****
+03:40:30 **** Incremental Build of configuration Debug for project Lab03 ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
@@ -80,11 +80,11 @@ Finished building target: Lab03.elf
 arm-none-eabi-size   Lab03.elf 
 arm-none-eabi-objdump -h -S  Lab03.elf  > "Lab03.list"
    text	   data	    bss	    dec	    hex	filename
-  12180	    208	   1712	  14100	   3714	Lab03.elf
+  12180	    176	   1712	  14068	   36f4	Lab03.elf
 Finished building: default.size.stdout
  
 Finished building: Lab03.list
  
 
-03:22:37 Build Finished. 0 errors, 6 warnings. (took 803ms)
+03:40:31 Build Finished. 0 errors, 6 warnings. (took 796ms)
 

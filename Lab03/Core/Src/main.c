@@ -48,9 +48,9 @@ char str[] =
 		"Display Blinking LED PRESS (1, 2)\n\rDisplay Group Members PRESS m\n\rQuit PRESS q";
 char ch1 = 'A';
 char word[] = "\n\rQUIT";
-char txt[] = "\n\r\t\tInput => ";
+char txt[] = "\n\r\tInput => ";
 char ch2;
-char m[] = "\n\r64010459\n\rBoonyawee Kreesaeng\n\r64010035\n\rKanyapak Boonyapas";
+char m[] = "\n\r64010459\n\rBoonyawee Kreesaeng";
 char u[] = "\n\rUnknown Command";
 /* USER CODE END PV */
 
