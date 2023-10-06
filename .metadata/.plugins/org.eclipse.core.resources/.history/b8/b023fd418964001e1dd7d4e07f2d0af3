@@ -123,7 +123,6 @@ int main(void) {
 //	  else {
 //		  HAL_UART_Transmit(&huart3, &ch2, 1, 1000);
 //	  }
-		//eiei
 		/*04*/
 		HAL_UART_Transmit(&huart3, txt, strlen(txt), 1000);
 
