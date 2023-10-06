@@ -122,7 +122,6 @@ int main(void)
 //	  HAL_Delay(100);
 //	  HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
 //	  pwm = (GPIOB->IDR & GPIO_PIN_10) >>10;
-
 	  /*03*/
 	  while (__HAL_UART_GET_FLAG(&huart3, UART_FLAG_RXNE) == RESET) {
 	              pwm_B = ((GPIOB->IDR & GPIO_PIN_10) >> 10) + 0;
