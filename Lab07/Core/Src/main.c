@@ -45,8 +45,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint8_t pwm;
-float dutyCycle = 2.0;
+//uint8_t pwm;
+//float dutyCycle = 0.75;
 
 uint8_t pwm_R;
 uint8_t pwm_G;
@@ -60,8 +60,6 @@ char txt[200];
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MPU_Initialize(void);
-static void MPU_Config(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -85,9 +83,6 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
-  /* MPU Configuration--------------------------------------------------------*/
-  MPU_Config();
 
   /* USER CODE BEGIN Init */
 
@@ -116,10 +111,10 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	/*01*/
-	  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
-	  HAL_Delay(100);
-	  HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
-	  pwm = (GPIOB->IDR & GPIO_PIN_10) >>10;
+//	  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
+//	  HAL_Delay(100);
+//	  HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
+//	  pwm = (GPIOB->IDR & GPIO_PIN_10) >>10;
 
 	  /*02*/
 //	  htim2.Instance -> CCR3 = (10000-1) * dutyCycle;
@@ -128,49 +123,49 @@ int main(void)
 //	  HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
 //	  pwm = (GPIOB->IDR & GPIO_PIN_10) >>10;
 	  /*03*/
-//	  while (__HAL_UART_GET_FLAG(&huart3, UART_FLAG_RXNE) == RESET) {
-//	              pwm_B = ((GPIOB->IDR & GPIO_PIN_10) >> 10) + 0;
-//	              pwm_G = ((GPIOA->IDR & GPIO_PIN_3) >> 3) + 2;
-//	              pwm_R = ((GPIOA->IDR & GPIO_PIN_5) >> 5) + 4;
-//	              HAL_Delay(100);
-//	          }
-//	          HAL_UART_Receive(&huart3, (uint8_t*) &ch1, 1, 1000);
-//	          if (ch1 == 'r') {
-//	              dutyCycle_R += 0.2;
-//	              if (dutyCycle_R > 1) {
-//	                  dutyCycle_R = 0;
-//	              }
-//	              HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_1);
-//	              htim2.Instance->CCR1 = (10000 - 1) * dutyCycle_R;
-//	              HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-//	              sprintf(txt," - Duty cycle RGB | %.2f : %.2f : %.2f\r\n",dutyCycle_R,dutyCycle_G,dutyCycle_B);
-//	              HAL_UART_Transmit(&huart3, &ch1, 1, 1000);
-//	              HAL_UART_Transmit(&huart3, txt, strlen(txt), 1000);
-//	          }
-//	          if (ch1 == 'g') {
-//	              dutyCycle_G += 0.2;
-//	              if (dutyCycle_G > 1) {
-//	                  dutyCycle_G = 0;
-//	              }
-//	              HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_4);
-//	              htim2.Instance->CCR4 = (10000 - 1) * dutyCycle_G;
-//	              HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
-//	              sprintf(txt," - Duty cycle RGB | %.2f : %.2f : %.2f\r\n",dutyCycle_R,dutyCycle_G,dutyCycle_B);
-//	              HAL_UART_Transmit(&huart3, &ch1, 1, 1000);
-//	              HAL_UART_Transmit(&huart3, txt, strlen(txt), 1000);
-//	          }
-//	          if (ch1 == 'b') {
-//	              dutyCycle_B += 0.2;
-//	              if (dutyCycle_B > 1) {
-//	                  dutyCycle_B = 0;
-//	              }
-//	              HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
-//	              htim2.Instance->CCR3 = (10000 - 1) * dutyCycle_B;
-//	              HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
-//	              sprintf(txt," - Duty cycle RGB | %.2f : %.2f : %.2f\r\n",dutyCycle_R,dutyCycle_G,dutyCycle_B);
-//	              HAL_UART_Transmit(&huart3, &ch1, 1, 1000);
-//	              HAL_UART_Transmit(&huart3, txt, strlen(txt), 1000);
-//	          }
+	  while (__HAL_UART_GET_FLAG(&huart3, UART_FLAG_RXNE) == RESET) {
+	              pwm_B = ((GPIOB->IDR & GPIO_PIN_10) >> 10) + 0;
+	              pwm_G = ((GPIOA->IDR & GPIO_PIN_3) >> 3) + 2;
+	              pwm_R = ((GPIOA->IDR & GPIO_PIN_5) >> 5) + 4;
+	              HAL_Delay(100);
+	          }
+	          HAL_UART_Receive(&huart3, (uint8_t*) &ch1, 1, 1000);
+	          if (ch1 == 'r') {
+	              dutyCycle_R += 0.2;
+	              if (dutyCycle_R > 1) {
+	                  dutyCycle_R = 0;
+	              }
+	              HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_1);
+	              htim2.Instance->CCR1 = (1000 - 1) * dutyCycle_R;
+	              HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+	              sprintf(txt," - Duty cycle RGB | %.2f : %.2f : %.2f\r\n",dutyCycle_R,dutyCycle_G,dutyCycle_B);
+	              HAL_UART_Transmit(&huart3, &ch1, 1, 1000);
+	              HAL_UART_Transmit(&huart3, txt, strlen(txt), 1000);
+	          }
+	          if (ch1 == 'g') {
+	              dutyCycle_G += 0.2;
+	              if (dutyCycle_G > 1) {
+	                  dutyCycle_G = 0;
+	              }
+	              HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_4);
+	              htim2.Instance->CCR4 = (1000 - 1) * dutyCycle_G;
+	              HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
+	              sprintf(txt," - Duty cycle RGB | %.2f : %.2f : %.2f\r\n",dutyCycle_R,dutyCycle_G,dutyCycle_B);
+	              HAL_UART_Transmit(&huart3, &ch1, 1, 1000);
+	              HAL_UART_Transmit(&huart3, txt, strlen(txt), 1000);
+	          }
+	          if (ch1 == 'b') {
+	              dutyCycle_B += 0.2;
+	              if (dutyCycle_B > 1) {
+	                  dutyCycle_B = 0;
+	              }
+	              HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
+	              htim2.Instance->CCR3 = (1000 - 1) * dutyCycle_B;
+	              HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
+	              sprintf(txt," - Duty cycle RGB | %.2f : %.2f : %.2f\r\n",dutyCycle_R,dutyCycle_G,dutyCycle_B);
+	              HAL_UART_Transmit(&huart3, &ch1, 1, 1000);
+	              HAL_UART_Transmit(&huart3, txt, strlen(txt), 1000);
+	          }
   }
   /* USER CODE END 3 */
 }
@@ -232,35 +227,6 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
-
-/* MPU Configuration */
-
-void MPU_Config(void)
-{
-  MPU_Region_InitTypeDef MPU_InitStruct = {0};
-
-  /* Disables the MPU */
-  HAL_MPU_Disable();
-
-  /** Initializes and configures the Region and the memory to be protected
-  */
-  MPU_InitStruct.Enable = MPU_REGION_ENABLE;
-  MPU_InitStruct.Number = MPU_REGION_NUMBER0;
-  MPU_InitStruct.BaseAddress = 0x0;
-  MPU_InitStruct.Size = MPU_REGION_SIZE_4GB;
-  MPU_InitStruct.SubRegionDisable = 0x87;
-  MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
-  MPU_InitStruct.AccessPermission = MPU_REGION_NO_ACCESS;
-  MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_DISABLE;
-  MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
-  MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE;
-  MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
-
-  HAL_MPU_ConfigRegion(&MPU_InitStruct);
-  /* Enables the MPU */
-  HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
-
-}
 
 /**
   * @brief  This function is executed in case of error occurrence.
