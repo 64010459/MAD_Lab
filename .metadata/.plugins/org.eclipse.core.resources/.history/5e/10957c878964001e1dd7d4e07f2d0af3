@@ -105,7 +105,6 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-
 		/*01*/
 //	//Check whether button is pressed
 //	if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_SET)
@@ -119,7 +118,6 @@ int main(void) {
 //		//Turn off LD1 at PB0
 //		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
 //	}
-
 		/*02*/
 //	//Check whether button is pressed
 //	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_RESET)
@@ -133,7 +131,6 @@ int main(void) {
 //	  	//Turn off LD2 at PC8
 //	  	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);
 //	}
-
 		/*04*/
 		if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_SET) {
 			num++;
